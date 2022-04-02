@@ -1,0 +1,36 @@
+{
+  "name": "atm",
+  "version": "1.0.0",
+  "description": "basic atm controller",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UmidjonOkhunov/ATM.git"
+  },
+  "author": "UmidjonOkhunov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UmidjonOkhunov/ATM/issues"
+  },
+  "homepage": "https://github.com/UmidjonOkhunov/ATM#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-async-errors": "^3.1.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "nodemon": "^2.0.15"
+  }
+}
