@@ -12,7 +12,7 @@ app.use(express.static("build"));
 app.use(express.json());
 app.use(middleware.requestLogger);
 
-app.use("/api/atm", atmRouter);
+app.use("/atm", atmRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
