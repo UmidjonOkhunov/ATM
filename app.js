@@ -6,7 +6,6 @@ const cors = require("cors");
 const atmRouter = require("./controllers/atm");
 const middleware = require("./utils/middleware");
 
-
 app.use(cors());
 app.use(express.static("build"));
 app.use(express.json());
