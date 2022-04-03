@@ -15,7 +15,7 @@ atmRouter.get("/insert/:card_id", (request, response) => {
   const card_id = request.params.card_id;
   const validCard = bankAPI.cardExists(card_id); // Checking card validity through bankAPI
 
-  if (validCard !== undefined) {
+  if (validCard === true) {
     atmDb.storeInsertedCardNumber(card_id); // Save Card ID in temporary DB
     response.json({
       message: "Now input your pin number to atm/pin/[your pin]",
@@ -38,7 +38,7 @@ atmRouter.get("/pin/:pin_num", (request, response) => {
   }
   const validPIN = bankAPI.validatePIN(card_id, pin_num);
 
-  if (validPIN !== undefined) {
+  if (validPIN === true) {
     atmDb.storeInsertedCardPIN(pin_num); // Save PIN number in temporary DB
     response.json({
       message:
@@ -47,7 +47,7 @@ atmRouter.get("/pin/:pin_num", (request, response) => {
   } else {
     atmDb.deleteInsertedCardInfo(); // Remove current card info from temporary DB
     response
-      .status(400)
+      .status(404)
       .json({
         error: "Incorrect PIN number. Please reinsert your card and try again!",
       })
@@ -68,7 +68,7 @@ atmRouter.get("/account/:account_type", (request, response) => {
 
   const validAccount = bankAPI.checkAccount(card_id, pin_num, account_type);
 
-  if (validAccount !== undefined) {
+  if (validAccount === true) {
     atmDb.storeAccountType(account_type); // Save account type in temporary DB
     response.json({
       message:
@@ -77,7 +77,7 @@ atmRouter.get("/account/:account_type", (request, response) => {
   } else {
     atmDb.deleteInsertedCardInfo(); // Remove current card info from temporary DB
     response
-      .status(400)
+      .status(404)
       .json({
         error:
           "Unexpected Error occurred. Please reinsert your card and try again!",
